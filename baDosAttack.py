@@ -26,7 +26,7 @@ similarityHeaders1['Pragma'] = 'no-cache'
 similarityHeaders1['Cache-Control'] = 'no-cache' 
 similarityHeaders1['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' 
 similarityHeaders1['Upgrade-Insecure-Requests'] = '1' 
-similarityHeaders1['User-Agent'] = 'eVil-sVen' 
+similarityHeaders1['User-Agent'] = 'yada' 
 similarityHeaders1['Referer'] = 'https://10.0.2.1/none.htm' 
 similarityHeaders1['Accept-Encoding'] = 'gzip, deflate' 
 similarityHeaders1['Accept-Language'] = 'en-US' 
@@ -38,7 +38,8 @@ similarityHeaders2['Pragma'] = 'no-cache'
 similarityHeaders2['Cache-Control'] = 'no-cache' 
 similarityHeaders2['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' 
 similarityHeaders2['Upgrade-Insecure-Requests'] = '1' 
-similarityHeaders2['User-Agent'] = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)' 
+#similarityHeaders2['User-Agent'] = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)' 
+similarityHeaders2['User-Agent'] = 'yada' 
 similarityHeaders2['Referer'] = 'https://10.0.2.1/none.htm' 
 similarityHeaders2['Accept-Encoding'] = 'gzip, deflate' 
 similarityHeaders2['Accept-Language'] = 'en-US' 
@@ -50,7 +51,8 @@ similarityHeaders3['Pragma'] = 'no-cache'
 similarityHeaders3['Cache-Control'] = 'no-cache' 
 similarityHeaders3['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' 
 similarityHeaders3['Upgrade-Insecure-Requests'] = '1' 
-similarityHeaders3['User-Agent'] = 'WireXBot' 
+#similarityHeaders3['User-Agent'] = 'WireXBot' 
+similarityHeaders3['User-Agent'] = 'yada' 
 similarityHeaders3['Referer'] = 'https://10.0.2.1/none.htm' 
 similarityHeaders3['Accept-Encoding'] = 'gzip, deflate' 
 similarityHeaders3['Accept-Language'] = 'en-US' 
@@ -61,9 +63,9 @@ session1 = requests.Session()
 session2 = requests.Session()
 session3 = requests.Session()
 
-session1.mount('https://', SourceAddressAdapter((srcIp4)))
-session2.mount('https://', SourceAddressAdapter((srcIp4)))
-session3.mount('https://', SourceAddressAdapter((srcIp4)))
+session1.mount('https://', SourceAddressAdapter((srcIp1)))
+session2.mount('https://', SourceAddressAdapter((srcIp2)))
+session3.mount('https://', SourceAddressAdapter((srcIp3)))
 
  
 async def make_requests():
